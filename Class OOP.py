@@ -27,14 +27,17 @@ class Employee:
 
     @classmethod
     def from_string(cls,emp_str):
-        first, secont, pay = emp_str.split('-')
+        first, second, pay = emp_str.split('-')
+        return cls(first, second, pay)
 
 
 emp_str_1 = 'Joana-Santos-50000'
 emp_str_2 = 'Joao-Santos-30000'
 emp_str_3 = 'Vanessa-Souza-70000'
 
-new_emp_1 = Employee(first,second,pay)
+new_emp_1 = Employee.from_string(emp_str_1)
+
+print(new_emp_1)
 
 # emp_1 = Employee('Carlos', 'Garcia', 60000)
 # emp_2 = Employee('Melannie', 'Perez', 70000)
