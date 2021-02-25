@@ -21,16 +21,27 @@ class Employee:
         self.pay = int(self.pay * Employee.raise_amount)
 
 
-emp_1 = Employee('Carlos', 'Garcia', 60000)
-emp_2 = Employee('Melannie', 'Perez', 70000)
-emp_3 = Employee('Carla','Martinez', 78000)
-emp_2.raise_amount = 1.05
-print(emp_2.__dict__)
+    @classmethod
+    def set_raise_amt(cls,amount):
+        cls.raise_amount = amount
 
+    @classmethod
+    def from_string(cls,emp_str):
+        first, secont, pay = emp_str.split('-')
+
+
+emp_str_1 = 'Joana-Santos-50000'
+emp_str_2 = 'Joao-Santos-30000'
+emp_str_3 = 'Vanessa-Souza-70000'
+
+new_emp_1 = Employee(first,second,pay)
+
+# emp_1 = Employee('Carlos', 'Garcia', 60000)
+# emp_2 = Employee('Melannie', 'Perez', 70000)
+
+# Employee.set_raise_amt(1.05)
+#
 # print(Employee.raise_amount)
 # print(emp_1.raise_amount)
 # print(emp_2.raise_amount)
 
-print(Employee.nums_of_emps)
-
-# print(Employee.__dict__)
