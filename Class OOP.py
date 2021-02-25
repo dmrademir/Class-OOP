@@ -23,4 +23,4 @@ class Developer(Employee):
 dev_1 = Developer('Carlos', 'Garcia', 60000)
 dev_2 = Developer('Melannie', 'Perez', 70000)
 
-print(dev_1.email)
+print(help(Developer))
