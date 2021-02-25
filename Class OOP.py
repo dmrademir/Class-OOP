@@ -17,10 +17,20 @@ class Employee:
     def apply_raise(self):
         self.pay = int(self.pay * Employee.raise_amount)
 
+
 class Developer(Employee):
-    pass
+    raise_amt = 1.10
 
-dev_1 = Developer('Carlos', 'Garcia', 60000)
-dev_2 = Developer('Melannie', 'Perez', 70000)
+    def __init__(self, first, second, pay, prog_lang):
+        super().__init__(first, second, pay)
+        self.prog_lang = prog_lang
 
-print(help(Developer))
+
+dev_1 = Developer('Carlos', 'Garcia', 50000, 'Python')
+dev_2 = Developer('Melannie', 'Perez', 60000, 'Java')
+
+print(dev_1.pay)
+dev_1.apply_raise()
+print(dev_1.pay)
+
+
