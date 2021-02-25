@@ -59,6 +59,7 @@ mng_1.remove_emp(dev_1)
 mng_1.print_emp()
 
 print(isinstance(mng_1, Developer))
+print(issubclass(Developer, Employee))
 # print(dev_2.email)
 # print(dev_2.prog_lang)
 
