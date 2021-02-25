@@ -1,5 +1,5 @@
 # Python Object-Oriented Programing
-# Class Variables
+# classmethods and staticmethods
 
 
 class Employee:
