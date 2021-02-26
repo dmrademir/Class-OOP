@@ -1,38 +1,38 @@
 # Python Object-Oriented Programing
-# Special (Magic/Dunder) Methods
+# Property Decorators - Getters, Setters, and Deleters
 
 class Employee:
-    raise_amount = 1.04
-
-    def __init__(self, first, second, pay):
+    def __init__(self, first, second, pay) -> object:
         self.first = first
         self.second = second
         self.pay = pay
-        self.email = f'{self.first}.{self.second}@company.com'
 
+    @property
+    def email(self):
+        return f'{self.first}.{self.second}@company.com'
+
+    @property
     def fullname(self):
         return f"{self.first} {self.second}"
 
-    def apply_raise(self):
-        self.pay = int(self.pay * Employee.raise_amount)
+    @fullname.setter
+    def fullname(self, name):
+        first, second = name.split(' ')
+        self.first = first
+        self.second = second
 
-    def __repr__(self):
-        return f"Employee('{self.first}','{self.second}','{self.pay}')"
-
-    def __str__(self):
-        return f"{self.fullname()} - {self.email}"
-
-    def __add__(self, other):
-        return self.pay + other.pay
-
-    def __len__(self):
-        return len(self.fullname())
+    @fullname.deleter
+    def fullname(self):
+        print('Delete Name')
+        self.first = None
+        self.second = None
 
 
-emp_1 = Employee('Carlos', 'Garcia', 50000 )
-emp_2 = Employee('Melannie', 'Perez', 60000)
+emp_1 = Employee('Carlos', 'Garcia', 50000)
+emp_1.first = 'Carlitos'
+emp_1.fullname = 'Mayko Jackson'
 
-print(emp_1+emp_2)
-print(len(emp_1))
-# print(str(emp_1))
-# print(repr(emp_1))
+print(emp_1.first)
+print(emp_1.email)
+print(emp_1.fullname)
+del emp_1.fullname
