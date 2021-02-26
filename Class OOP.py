@@ -1,6 +1,5 @@
 # Python Object-Oriented Programing
-# Inheritance - Creating Subclasses
-
+# Special (Magic/Dunder) Methods
 
 class Employee:
     raise_amount = 1.04
@@ -17,52 +16,23 @@ class Employee:
     def apply_raise(self):
         self.pay = int(self.pay * Employee.raise_amount)
 
+    def __repr__(self):
+        return f"Employee('{self.first}','{self.second}','{self.pay}')"
 
-class Developer(Employee):
-    raise_amt = 1.10
+    def __str__(self):
+        return f"{self.fullname()} - {self.email}"
 
-    def __init__(self, first, second, pay, prog_lang):
-        super().__init__(first, second, pay)
-        self.prog_lang = prog_lang
+    def __add__(self, other):
+        return self.pay + other.pay
 
-
-class Manager(Employee):
-    def __init__(self, first, second, pay, employees=None):
-        super().__init__(first, second, pay)
-        if employees is None:
-            self.employees = []
-        else:
-            self.employees = employees
-
-    def add_emp(self, emp):
-        if emp not in self.employees:
-            self.employees.append(emp)
-
-    def remove_emp(self, emp):
-        if emp in self.employees:
-            self.employees.remove(emp)
-
-    def print_emp(self):
-        for emp in self.employees:
-            print(f'--> {emp.fullname()}')
+    def __len__(self):
+        return len(self.fullname())
 
 
-dev_1 = Developer('Carlos', 'Garcia', 50000, 'Python')
-dev_2 = Developer('Melannie', 'Perez', 60000, 'Java')
+emp_1 = Employee('Carlos', 'Garcia', 50000 )
+emp_2 = Employee('Melannie', 'Perez', 60000)
 
-mng_1 = Manager('Suzie', 'Guttierez', 120000, [dev_1])
-print(mng_1.email)
-
-mng_1.add_emp(dev_2)
-mng_1.remove_emp(dev_1)
-
-mng_1.print_emp()
-
-print(isinstance(mng_1, Developer))
-print(issubclass(Developer, Employee))
-# print(dev_2.email)
-# print(dev_2.prog_lang)
-
-# print(dev_1.pay)
-# dev_1.apply_raise()
-# print(dev_1.pay)
+print(emp_1+emp_2)
+print(len(emp_1))
+# print(str(emp_1))
+# print(repr(emp_1))
